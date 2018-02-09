@@ -1,6 +1,7 @@
 package camp.bso.inf.example;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -84,12 +85,21 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_kalender) {
             // Handle the camera action
         } else if (id == R.id.nav_berita) {
-            // Handle the camera action
+            Intent i =new Intent(getApplicationContext(),NewsActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_cuaca) {
-
+            Intent i =new Intent(getApplicationContext(),WeatherActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_map) {
 
-        } else if (id == R.id.nav_about) {
+                    Uri gmmIntentUri = Uri.parse("geo:=-6.931163, 107.717327");
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps");
+                    if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(mapIntent);
+                    }
+                }
+        else if (id == R.id.nav_about) {
             Intent i =new Intent(getApplicationContext(),DetailActivity.class);
             startActivity(i);
 
